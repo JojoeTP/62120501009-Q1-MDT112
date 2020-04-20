@@ -13,7 +13,7 @@ void setup(){
 int led = 3,time = 100,count = 1;
 
 void loop(){
-    for(led = 3 ; led <= 13 ; led++){
+    for(led = 3 ; led <= 13 ; led++){//ไล่ขึ้น
         if(led == 8){
             digitalWrite(led,0);
             continue;
@@ -32,14 +32,10 @@ void loop(){
             delay(700);
         }
         else  {
-            
-            
         }
-            
-            
 
     }
-    for(led = 13 ; led >= 3 ; led--){
+    for(led = 13 ; led >= 3 ; led--){//ไล่ลง
         if(led == 8){
             digitalWrite(led,0);
             continue;

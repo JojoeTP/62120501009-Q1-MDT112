@@ -13,7 +13,7 @@ void setup(){
 int led = 3,time = 100,count = 1;
 
 void loop(){
-    for(led = 3 ; led <= 13 ; led++){//ไล่ขึ้น
+    for(led = 3 ; led <= 13 ; led++){
         if(led == 8){
             digitalWrite(led,0);
             continue;
@@ -21,43 +21,40 @@ void loop(){
         digitalWrite(led,1);
         delay(time);
         digitalWrite(led,0);
-
-        if ( digitalRead(2) == 0 ){
-            // do noting
-            
-            count = count * 2;
-            Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
-            tone(8,400,100);
-            time = time / 2;
-            delay(700);
-        }
-        else  {
-        }
-
-    }
-    for(led = 13 ; led >= 3 ; led--){//ไล่ลง
-        if(led == 8){
-            digitalWrite(led,0);
-            continue;
-        }
-        digitalWrite(led,1);
-        delay(time);
-        digitalWrite(led,0);
-
-        if ( digitalRead(2) == 0 ){
-            // do noting
-            if( digitalRead(2) == 0 ){
-            
-            count = count * 2;
-            Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
-            tone(8,400,100);
-            time = time / 2;
-            delay(700);
-            
+        
+        int press = 0;
+        while ( digitalRead(2) == 0 ){
+            press = press + 1;
+            delay(100);
+            if(press<=1){
+                delay(100);
+                count = count * 2;
+                Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
+                tone(8,400,100);
+                time = time / 2;
             }
+        } 
+    }
+    for(led = 13 ; led >= 3 ; led--){
+        if(led == 8){
+            digitalWrite(led,0);
+            continue;
         }
-        else  {
-            
-        }
+        digitalWrite(led,1);
+        delay(time);
+        digitalWrite(led,0);
+        
+        int press = 0;
+        while ( digitalRead(2) == 0 ){
+            press = press + 1;
+            delay(100);
+            if(press<=1){
+                delay(100);
+                count = count * 2;
+                Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
+                tone(8,400,100);
+                time = time / 2;
+            }
+        } 
     }
 }
